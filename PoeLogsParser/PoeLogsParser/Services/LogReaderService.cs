@@ -12,13 +12,11 @@ using PoeLogsParser.Services.Abstractions;
 
 namespace PoeLogsParser.Services
 {
-    public class LogReaderService : ILogReaderService
+    public sealed class LogReaderService : ILogReaderService
     {
         #region Events
 
-        public delegate void NewLogEntryEvent(string line);
-
-        public event NewLogEntryEvent OnNewLogEntry;
+        public event ILogReaderService.NewLogEntryEvent NewLogEntry;
 
         #endregion
 
@@ -97,7 +95,7 @@ namespace PoeLogsParser.Services
 
                 foreach (var line in newLines)
                 {
-                    OnOnNewLogEntry(line);
+                    OnNewLogEntry(line);
                 }
             }
             // ReSharper disable once FunctionNeverReturns
@@ -152,10 +150,11 @@ namespace PoeLogsParser.Services
 
             FindLogFilePath();
 
-           // new FileStream(@"c:\file.txt", FileMode.Open, FileAccess.Read)
+            // new FileStream(@"c:\file.txt", FileMode.Open, FileAccess.Read)
 
             return true;
         }
+
 
         public string ReadLastLine()
         {
@@ -173,9 +172,9 @@ namespace PoeLogsParser.Services
         }
 
 
-        protected virtual void OnOnNewLogEntry(string line)
+        private void OnNewLogEntry(string line)
         {
-            OnNewLogEntry?.Invoke(line);
+            NewLogEntry?.Invoke(line);
         }
     }
 }

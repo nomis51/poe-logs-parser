@@ -92,5 +92,15 @@ namespace PoeLogsParser.Services
 
             return new Tuple<LogEntry, string>(entry, line);
         }
+
+        public void AddParser(IParser parser)
+        {
+            _parsers.Add(parser);
+        }
+
+        public void RemoveAllParsers()
+        {
+            _parsers.Clear();
+        }
     }
 }

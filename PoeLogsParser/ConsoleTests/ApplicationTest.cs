@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text;
+using PoeLogsParser.Models.Abstractions;
 using PoeLogsParser.Services;
+using PoeLogsParser.Services.Abstractions;
 
 namespace ConsoleTests
 {
@@ -8,6 +10,12 @@ namespace ConsoleTests
     {
         public void Run()
         {
+            ILogService ls = new LogService();
+            ls.NewLogEntry += delegate(ILogEntry entry)
+            {
+                var t = 0;
+            };
+            
             var logs = new List<string>()
             {
                 "2020/07/26 18:51:07 11204828 b60 [INFO Client 12372] #HarcorDebil: ALL END GAME BOSSES SERVICE FOR TIPS AND CHALLANGES(PM FOR CHALLANGES INFO)(EXCPET ATZIRI,HOGM)",
