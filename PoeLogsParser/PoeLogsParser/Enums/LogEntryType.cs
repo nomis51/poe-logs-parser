@@ -11,5 +11,8 @@ namespace PoeLogsParser.Enums
         Outgoing,
         System,
         ChatMessage,
+        JoinArea,
+        LeaveArea,
+        ChangeArea
     }
 }
