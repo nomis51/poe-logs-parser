@@ -16,5 +16,6 @@ namespace PoeLogsParser.Services.Abstractions
         ILogEntry ReadLastLine();
         ILogEntry ReadLine(int lineNo);
         Dictionary<int, ILogEntry> ReadLines(int[] linesNo);
+        ILogEntry Parse(string line);
     }
 }

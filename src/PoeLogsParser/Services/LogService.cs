@@ -87,6 +87,11 @@ namespace PoeLogsParser.Services
             return entries;
         }
 
+        public ILogEntry Parse(string line)
+        {
+            return _logParserService.Parse(line);
+        }
+
         protected virtual void OnNewLogEntry(ILogEntry logEntry)
         {
             NewLogEntry?.Invoke(logEntry);
