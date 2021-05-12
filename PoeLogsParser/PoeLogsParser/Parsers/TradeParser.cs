@@ -46,7 +46,9 @@ namespace PoeLogsParser.Parsers
 
             tradeLogEntry.Player = parts[0];
 
-            if (_regNumber.IsMatch(parts[1]))
+            var itemMatch = _regNumber.Match(parts[1]);
+            
+            if (itemMatch.Success && itemMatch.Index == 0 && itemMatch.Length == parts[1].Length)
             {
                 var itemParts = parts[1].Split(" ");
 

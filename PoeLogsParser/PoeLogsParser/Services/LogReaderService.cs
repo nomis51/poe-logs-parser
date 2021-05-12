@@ -74,31 +74,33 @@ namespace PoeLogsParser.Services
             }
         }
 
-        private async void Watch()
+        private Task Watch()
         {
-            while (true)
+           return Task.Run(async () =>
             {
-                var newLines = new List<string>();
-
-                do
+                while (true)
                 {
-                    try
-                    {
-                        await Task.Delay(500);
+                    var newLines = new List<string>();
 
-                        newLines = this.ReadNewLines();
-                    } catch
+                    do
                     {
-                        // ignored
+                        try
+                        {
+                            await Task.Delay(500);
+
+                            newLines = this.ReadNewLines();
+                        } catch
+                        {
+                            // ignored
+                        }
+                    } while (!newLines.Any());
+
+                    foreach (var line in newLines)
+                    {
+                        OnNewLogEntry(line);
                     }
-                } while (!newLines.Any());
-
-                foreach (var line in newLines)
-                {
-                    OnNewLogEntry(line);
                 }
-            }
-            // ReSharper disable once FunctionNeverReturns
+            });
         }
 
         private void SetEndOfFile()
@@ -126,9 +128,9 @@ namespace PoeLogsParser.Services
             file.Position = currentPosition;
             var reader = new StreamReader(file);
 
-            var line = reader.ReadLine();
             while (!reader.EndOfStream)
             {
+                var line = reader.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
                     lines.Add(line);

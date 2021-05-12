@@ -44,7 +44,13 @@ namespace PoeLogsParser.Services
 
             foreach (var parser in _parsers.Where(parser => parser.CanParse(line)))
             {
-                return parser.Execute(entry.Item2, entry.Item1);
+                try
+                {
+                    return parser.Execute(entry.Item2, entry.Item1);
+                } catch
+                {
+                    // ignored
+                }
             }
 
             entry.Item1.Types = new[] {LogEntryType.System};
@@ -60,14 +66,14 @@ namespace PoeLogsParser.Services
 
             if (dateEndIndex == -1)
             {
-                return default(Tuple<LogEntry, string>);
+                return default;
             }
 
             var timeEndIndex = line.IndexOf(" ", dateEndIndex, StringComparison.Ordinal);
 
             if (timeEndIndex == -1)
             {
-                return default(Tuple<LogEntry, string>);
+                return default;
             }
 
             var dateTimeEndIndex = (dateEndIndex + timeEndIndex) - 1;
@@ -79,7 +85,7 @@ namespace PoeLogsParser.Services
 
             if (!logTagMatch.Success)
             {
-                return default(Tuple<LogEntry, string>);
+                return default;
             }
 
             var tagStr = line.Substring(logTagMatch.Index + 1,

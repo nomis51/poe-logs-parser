@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using PoeLogsParser.Models.Abstractions;
 using PoeLogsParser.Services;
 using PoeLogsParser.Services.Abstractions;
@@ -10,13 +12,15 @@ namespace ConsoleTests
     {
         public void Run()
         {
-            ILogService ls = new LogService();
+            ILogService ls = new LogService("./ClientTest.txt");
             ls.NewLogEntry += delegate(ILogEntry entry)
             {
                 var t = 0;
             };
-            
-            var logs = new List<string>()
+
+            Console.ReadKey();
+
+            /*var logs = new List<string>()
             {
                 "2020/07/26 18:51:07 11204828 b60 [INFO Client 12372] #HarcorDebil: ALL END GAME BOSSES SERVICE FOR TIPS AND CHALLANGES(PM FOR CHALLANGES INFO)(EXCPET ATZIRI,HOGM)",
                 "2020/07/26 15:54:03 581390 b60 [INFO Client 12372] : Joopathedead has joined the area.",
@@ -36,7 +40,7 @@ namespace ConsoleTests
             {
                 var result = lps.Parse(log);
                 var g = 0;
-            }
+            }*/
         }
     }
 }
