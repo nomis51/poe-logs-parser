@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using PoeLogsParser.Exceptions;
 using PoeLogsParser.Models;
@@ -33,9 +34,7 @@ namespace PoeLogsParser.Services
         #region Members
 
         private string _logFilePath;
-        private bool _fileOpened = false;
-        private FileStream _file;
-        private long _endOfDile = 0;
+        private long _endOfFile = 0;
 
         #endregion
 
@@ -44,12 +43,14 @@ namespace PoeLogsParser.Services
         public LogReaderService(string logFilePath)
         {
             _logFilePath = logFilePath;
+            SetEndOfFile();
             Watch();
         }
 
         public LogReaderService()
         {
             FindLogFilePath();
+            SetEndOfFile();
             Watch();
         }
 
@@ -76,7 +77,7 @@ namespace PoeLogsParser.Services
 
         private Task Watch()
         {
-           return Task.Run(async () =>
+            return Task.Run(async () =>
             {
                 while (true)
                 {
@@ -106,7 +107,7 @@ namespace PoeLogsParser.Services
         private void SetEndOfFile()
         {
             var file = File.Open(_logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            _endOfDile = file.Length - 1;
+            _endOfFile = file.Length - 1;
             file.Close();
         }
 
@@ -114,11 +115,11 @@ namespace PoeLogsParser.Services
         {
             var lines = new List<string>();
 
-            var currentPosition = _endOfDile;
+            var currentPosition = _endOfFile;
 
             SetEndOfFile();
 
-            if (currentPosition >= _endOfDile)
+            if (currentPosition >= _endOfFile)
             {
                 return lines;
             }
@@ -133,7 +134,7 @@ namespace PoeLogsParser.Services
                 var line = reader.ReadLine();
                 if (!string.IsNullOrEmpty(line))
                 {
-                    lines.Add(line);
+                    lines.Add(RemoveSpecialChars(line));
                 }
             }
 
@@ -143,34 +144,68 @@ namespace PoeLogsParser.Services
             return lines;
         }
 
-        private bool OpenLogFile()
+        private string GetNthLineFromEndOfFile(int lineNo)
         {
-            if (string.IsNullOrEmpty(_logFilePath))
+            if (string.IsNullOrEmpty(_logFilePath)) return null;
+
+            if (_endOfFile < 1)
             {
-                return false;
+                SetEndOfFile();
             }
 
-            FindLogFilePath();
+            var file = File.Open(_logFilePath, FileMode.Open, FileAccess.Read,
+                FileShare.ReadWrite);
+            var currentPosition = _endOfFile - 1;
+            var line = "";
 
-            // new FileStream(@"c:\file.txt", FileMode.Open, FileAccess.Read)
+            for (var i = 0; i < lineNo; ++i)
+            {
+                line = "";
 
-            return true;
+                var currentCharValue = -1;
+                var foundAChar = false;
+                var isEol = false;
+
+                do
+                {
+                    if (currentPosition < 1) break;
+                    currentPosition -= 1;
+                    file.Position = currentPosition;
+                    currentCharValue = file.ReadByte();
+                    var currentChar = (char) currentCharValue;
+                    line += currentChar;
+                    isEol = currentChar.Equals('\n');
+
+                    if (!foundAChar && !isEol)
+                    {
+                        foundAChar = true;
+                    }
+                } while (currentCharValue != -1 && (!isEol || !foundAChar));
+            }
+
+            return new string(RemoveSpecialChars(line).Reverse().ToArray());
         }
 
+        private string RemoveSpecialChars(string str)
+        {
+            return string.IsNullOrEmpty(str) ? str : Regex.Replace(str, "[\\r\\n]", "");
+        }
 
         public string ReadLastLine()
         {
-            throw new System.NotImplementedException();
+            return GetNthLineFromEndOfFile(1);
         }
 
         public string ReadLine(int lineNo)
         {
-            throw new System.NotImplementedException();
+            return lineNo > 0
+                ? RemoveSpecialChars(File.ReadLines(_logFilePath).Skip(lineNo - 1).Take(1).FirstOrDefault())
+                : null;
         }
 
         public IEnumerable<string> ReadLines(int[] linesNo)
         {
-            throw new System.NotImplementedException();
+            return linesNo.Select(ReadLine);
         }
 
 
