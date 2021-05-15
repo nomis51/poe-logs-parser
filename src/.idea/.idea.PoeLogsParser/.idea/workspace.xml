@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d93734b-590b-4c2c-9fbb-5b9ec500885a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PoeLogsParser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PoeLogsParser/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleTests/ApplicationTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleTests/ApplicationTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/Abstractions/ILogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Abstractions/ILogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/AreaChangeLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Entries/AreaChangeLogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/ChatMessageLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Entries/ChatMessageLogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/LogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Entries/LogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/PlayerJoinedAreaLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Entries/PlayerJoinedAreaLogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/TradeLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Entries/TradeLogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Parsers/Abstractions/IParserBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/ILogService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/ILogService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Services/LogService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Services/LogService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +76,11 @@
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/ILogReaderService.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Parsers/TradeParser.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogParserService.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/ILogService.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogService.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/Abstractions/ILogEntry.cs" />
       <option value="$PROJECT_DIR$/ConsoleTests/ApplicationTest.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/ILogService.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogService.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sGawa4kVNfPCZ6HUiq8YezZSS8" />
@@ -127,6 +133,7 @@
       <updated>1620501621677</updated>
       <workItem from="1620501627051" duration="35224000" />
       <workItem from="1620862358946" duration="3076000" />
+      <workItem from="1621107208189" duration="1167000" />
     </task>
     <servers />
   </component>
@@ -158,10 +165,10 @@
           <line>98</line>
           <properties documentPath="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" initialLine="98" containingFunctionPresentation="lambda expression inside method 'Watch'">
             <startOffsets>
-              <option value="2537" />
+              <option value="2535" />
             </startOffsets>
             <endOffsets>
-              <option value="2567" />
+              <option value="2565" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="63" />

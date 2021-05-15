@@ -68,7 +68,7 @@ namespace PoeLogsParser.Services
                     if (process.MainModule?.FileName != null)
                         _logFilePath =
                             $"{(process.MainModule?.FileName)[..process.MainModule.FileName.LastIndexOf("\\", StringComparison.Ordinal)]}\\logs\\Client.txt";
-                } catch (Exception e)
+                } catch (Exception)
                 {
                     throw new CannotFindLogFileException(process.ProcessName);
                 }

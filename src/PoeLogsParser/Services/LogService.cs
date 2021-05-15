@@ -10,10 +10,22 @@ namespace PoeLogsParser.Services
 {
     public class LogService : ILogService
     {
+        #region Events
+
         public event ILogService.NewLogEntryEvent NewLogEntry;
-        
+        public event ILogService.NewTradeLogEntryEvent NewTradeLogEntry;
+        public event ILogService.NewPlayerJoinedAreaLogEntryEvent NewPlayerJoinedAreaLogEntry;
+        public event ILogService.NewAreaChangeLogEntryEvent NewAreaChangeLogEntry;
+        public event ILogService.NewChatMessageLogEntryEvent NewChatMessageLogEntry;
+
+        #endregion
+
+        #region Members
+
         private readonly ILogReaderService _logReaderService;
         private readonly ILogParserService _logParserService;
+
+        #endregion
 
         public LogService(string logFilePath = "")
         {
@@ -21,18 +33,18 @@ namespace PoeLogsParser.Services
                 ? new LogReaderService()
                 : new LogReaderService(logFilePath);
             _logParserService = new LogParserService();
-            
+
             _logReaderService.NewLogEntry += LogReaderService_OnNewLogEntry;
         }
 
         private void LogReaderService_OnNewLogEntry(string line)
         {
             if (string.IsNullOrEmpty(line)) return;
-            
+
             var entry = _logParserService.Parse(line);
 
             if (entry == null) return;
-            
+
             OnNewLogEntry(entry);
         }
 
@@ -92,9 +104,33 @@ namespace PoeLogsParser.Services
             return _logParserService.Parse(line);
         }
 
+        #region Event invokers
+
         protected virtual void OnNewLogEntry(ILogEntry logEntry)
         {
             NewLogEntry?.Invoke(logEntry);
         }
+
+        protected virtual void OnNewTradeLogEntry(TradeLogEntry logEntry)
+        {
+            NewTradeLogEntry?.Invoke(logEntry);
+        }
+
+        protected virtual void OnNewPlayerJoinedAreaLogEntry(PlayerJoinedAreaLogEntry logEntry)
+        {
+            NewPlayerJoinedAreaLogEntry?.Invoke(logEntry);
+        }
+
+        protected virtual void OnNewAreaChangeLogEntry(AreaChangeLogEntry logEntry)
+        {
+            NewAreaChangeLogEntry?.Invoke(logEntry);
+        }
+
+        protected virtual void OnNewChatMessageLogEntry(ChatMessageLogEntry logEntry)
+        {
+            NewChatMessageLogEntry?.Invoke(logEntry);
+        }
+
+        #endregion
     }
 }

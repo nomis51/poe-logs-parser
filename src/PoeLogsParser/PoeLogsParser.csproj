@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>PoeLogsParser</Title>
+        <Authors>nomis51</Authors>
+        <Description>A .NET Path of Exile logs parser. Read and parse log entries in the Client.txt file</Description>
+        <PackageProjectUrl>https://github.com/nomis51/poe-logs-parser</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/nomis51/poe-logs-parser/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/nomis51/poe-logs-parser</RepositoryUrl>
+        <PackageTags>poe,path,of,exile,log,parser,</PackageTags>
     </PropertyGroup>
 
 </Project>
