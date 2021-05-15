@@ -1,0 +1,33 @@
+{
+  "name": "poe-logs-parser",
+  "version": "1.0.0",
+  "description": "A TypeScript Path of exile logs parser",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "tsc --init",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomis51/poe-logs-parser.git"
+  },
+  "keywords": [
+    "poe",
+    "path",
+    "of",
+    "exile",
+    "logs",
+    "parser"
+  ],
+  "author": "nomis51",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nomis51/poe-logs-parser/issues"
+  },
+  "homepage": "https://github.com/nomis51/poe-logs-parser#readme"
+}
