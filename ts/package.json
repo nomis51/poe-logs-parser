@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "A TypeScript Path of exile logs parser",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "find-process": "^1.4.4",
+    "rxjs": "^7.0.1"
+  },
   "devDependencies": {
+    "@types/node": "^15.3.0",
     "typescript": "^4.2.4"
   },
   "scripts": {

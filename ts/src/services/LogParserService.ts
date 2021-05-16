@@ -22,7 +22,7 @@ export class LogParserService {
 		];
 	}
 
-	public parser(line: string): LogEntry | undefined {
+	public parse(line: string): LogEntry | undefined {
 		let entry = this.parseLogEntry(line);
 
 		if (!entry) return;
