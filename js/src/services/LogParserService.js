@@ -20,7 +20,7 @@ class LogParserService {
             new OutgoingTradeParser_1.OutgoingTradeParser()
         ];
     }
-    parser(line) {
+    parse(line) {
         let entry = this.parseLogEntry(line);
         if (!entry)
             return;
