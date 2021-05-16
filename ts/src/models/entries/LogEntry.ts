@@ -1,5 +1,5 @@
-import { LogEntryTag } from "../../../enums/LogEntryTag";
-import { LogEntryType } from "../../../enums/LogEntryType";
+import { LogEntryTag } from "../../enums/LogEntryTag";
+import { LogEntryType } from "../../enums/LogEntryType";
 
 export class LogEntry {
 	public raw!: String;
@@ -7,5 +7,10 @@ export class LogEntry {
 	public types!: LogEntryType[];
 	public tag!: LogEntryTag;
 
-	constructor() { }
+	constructor(raw: string, time: Date, types: LogEntryType[], tag: LogEntryTag) {
+		this.raw = raw;
+		this.time = time;
+		this.types = types;
+		this.tag = tag;
+	}
 };

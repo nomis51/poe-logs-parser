@@ -1,15 +1,21 @@
-import { LogEntryType } from "../../enums/LogEntryType";
+import { LogEntryType } from "../enums/LogEntryType";
 import { AreaChangeLogEntry } from "../models/entries/AreaChangeLogEntry";
 import { LogEntry } from "../models/entries/LogEntry";
 import { IParser } from "./abstractions/IParser";
 
 export class AreaChangeParser implements IParser {
+
 	private _regMatch: RegExp = /You have entered .+\\./gi
 	private _regsClean: RegExp[] = [
 		/: /gi,
 		/You have entered /gi,
 		/\\./gi
 	]
+
+	execute(entry: LogEntry, line: string): LogEntry {
+		const cleanedline = this.clean(line);
+		return this.parse(cleanedline as string, entry);
+	}
 
 	canParse(line: string): boolean {
 		return this._regMatch.test(line);
