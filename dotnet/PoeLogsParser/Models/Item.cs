@@ -6,18 +6,7 @@ namespace PoeLogsParser.Models
     {
         public string Name { get; set; }
 
-        public string EscapedName
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(Name))
-                {
-                    return "";
-                }
-
-                return Escape(Name);
-            }
-        }
+        public string EscapedName => string.IsNullOrEmpty(Name) ? "" : Escape(Name);
 
         public int Quantity { get; set; } = 1;
 
