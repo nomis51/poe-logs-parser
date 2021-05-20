@@ -124,4 +124,8 @@ public class YouApp {
 
 ```
 
+# TODO
+- Implement a TypeScript / JavaScript version
+- Add more Parsers
+
 Tested on Linux and Windows.

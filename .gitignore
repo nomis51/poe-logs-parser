@@ -348,5 +348,15 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-src/.idea
-src/.idea/*
+**/src/.idea/*
+**/src/.idea/*
+src/.idea/.idea.PoeLogsParser/.idea/workspace.xml
+src/.idea/.idea.PoeLogsParser/.idea/workspace.xml
+src/.idea/.idea.PoeLogsParser/.idea/workspace.xml
+src/.idea/.idea.PoeLogsParser/.idea/workspace.xml
+dotnet/.idea/.idea.PoeLogsParser/.idea/.name
+dotnet/.idea/.idea.PoeLogsParser/.idea/encodings.xml
+dotnet/.idea/.idea.PoeLogsParser/.idea/indexLayout.xml
+dotnet/.idea/.idea.PoeLogsParser/.idea/projectSettingsUpdater.xml
+dotnet/.idea/.idea.PoeLogsParser/.idea/vcs.xml
+dotnet/.idea/.idea.PoeLogsParser/.idea/workspace.xml
