@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PoeLogsParser.Enums;
 using PoeLogsParser.Models;
 using PoeLogsParser.Models.Abstractions;
 using PoeLogsParser.Parsers.Abstractions;
@@ -45,7 +46,26 @@ namespace PoeLogsParser.Services
 
             if (entry == null) return;
 
-            OnNewLogEntry(entry);
+            if (entry.Types.Contains(LogEntryType.Trade))
+            {
+                OnNewTradeLogEntry((TradeLogEntry) entry);
+            }
+            else if (entry.Types.Contains(LogEntryType.ChangeArea))
+            {
+                OnNewAreaChangeLogEntry((AreaChangeLogEntry) entry);
+            }
+            else if (entry.Types.Contains(LogEntryType.JoinArea))
+            {
+                OnNewPlayerJoinedAreaLogEntry((PlayerJoinedAreaLogEntry) entry);
+            }
+            else if (entry.Types.Contains(LogEntryType.ChatMessage))
+            {
+                OnNewChatMessageLogEntry((ChatMessageLogEntry) entry);
+            }
+            else
+            {
+                OnNewLogEntry(entry);
+            }
         }
 
         public void AddParser(IParser parser)
