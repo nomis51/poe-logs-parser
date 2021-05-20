@@ -4,7 +4,11 @@
     <projectFile>ConsoleTests/ConsoleTests.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d93734b-590b-4c2c-9fbb-5b9ec500885a" name="Default Changelist" comment="" />
+    <list default="true" id="1d93734b-590b-4c2c-9fbb-5b9ec500885a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/AreaChangeLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/AreaChangeLogEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PoeLogsParser/Models/TradeLogEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PoeLogsParser/Models/TradeLogEntry.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,16 +25,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/2AF/AsyncVoidMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/71/Convert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/B3/Number.Parsing.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/3FA/Dictionary.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/E9/Tuple.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/37D/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/510C7690-83FE-4DE5-8A2E-FDF79F2EC929/37E/FileStream.Unix.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3C087D87-5AA6-48BC-A5E1-4BB9040E06B3/D/AnyAll.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/Abstractions/IService.cs" />
@@ -43,12 +37,9 @@
       <option value="$PROJECT_DIR$/PoeLogsParser/Enums/LogEntryTag.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/StashLocation.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/IncomingTradeLogEntry.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Models/Item.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Models/TradeLogEntry.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Enums/CurrencyType.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/Price.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/CurrencyService.cs" />
-      <option value="$PROJECT_DIR$/PoeLogsParser/Models/AreaChangeLogEntry.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/PlayerJoinedAreaLogEntry.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Models/ChatMessageLogEntry.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Parsers/Abstractions/IParserBasse.cs" />
@@ -70,6 +61,9 @@
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogService.cs" />
       <option value="$PROJECT_DIR$/PoeLogsParser/Services/LogReaderService.cs" />
       <option value="$PROJECT_DIR$/ConsoleTests/ApplicationTest.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Models/TradeLogEntry.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Models/Item.cs" />
+      <option value="$PROJECT_DIR$/PoeLogsParser/Models/AreaChangeLogEntry.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sGawa4kVNfPCZ6HUiq8YezZSS8" />
@@ -121,13 +115,14 @@
       <option name="presentableId" value="Default" />
       <updated>1620501621677</updated>
       <workItem from="1620501627051" duration="35224000" />
+      <workItem from="1621463114607" duration="1113000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -139,6 +134,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
