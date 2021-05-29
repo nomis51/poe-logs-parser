@@ -46,7 +46,11 @@ namespace PoeLogsParser.Services
 
             if (entry == null) return;
 
-            if (entry.Types.Contains(LogEntryType.Trade))
+            if (entry.Types.Contains(LogEntryType.ChatMessage))
+            {
+                OnNewChatMessageLogEntry((ChatMessageLogEntry) entry);
+            }
+           else if (entry.Types.Contains(LogEntryType.Trade))
             {
                 OnNewTradeLogEntry((TradeLogEntry) entry);
             }
@@ -57,10 +61,6 @@ namespace PoeLogsParser.Services
             else if (entry.Types.Contains(LogEntryType.JoinArea))
             {
                 OnNewPlayerJoinedAreaLogEntry((PlayerJoinedAreaLogEntry) entry);
-            }
-            else if (entry.Types.Contains(LogEntryType.ChatMessage))
-            {
-                OnNewChatMessageLogEntry((ChatMessageLogEntry) entry);
             }
             else
             {

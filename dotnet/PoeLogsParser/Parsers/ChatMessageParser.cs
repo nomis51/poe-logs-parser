@@ -35,7 +35,7 @@ namespace PoeLogsParser.Parsers
             };
 
             var parts = line.Split(": ", StringSplitOptions.RemoveEmptyEntries);
-            chatMessageLogEntry.Player = Regex.Replace(parts[0], "[#@%\\$]", "");
+            chatMessageLogEntry.Player = Regex.Replace(parts[0], "[#@%$]", "");
             chatMessageLogEntry.Message = parts[1..].Aggregate((total, value) => total + value);
 
             return chatMessageLogEntry;

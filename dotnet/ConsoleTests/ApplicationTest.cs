@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using PoeLogsParser.Models;
 using PoeLogsParser.Models.Abstractions;
 using PoeLogsParser.Parsers;
 using PoeLogsParser.Services;
@@ -15,13 +16,12 @@ namespace ConsoleTests
     {
         public void Run()
         {
-            ILogService ls = new LogService("./Client.txt");
-            ls.NewLogEntry += delegate(ILogEntry entry)
+            ILogService ls = new LogService("D:/Games/Path of Exile/logs/Client.txt");
+            ls.NewChatMessageLogEntry += delegate(ChatMessageLogEntry entry)
             {
                 var t = 0; // Handle the log entry
             };
-
-            ls.AddParser(new AreaChangeParser());
+            
             
             Console.ReadKey();
         }

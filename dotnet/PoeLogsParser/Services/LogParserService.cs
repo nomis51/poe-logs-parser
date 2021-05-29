@@ -27,6 +27,7 @@ namespace PoeLogsParser.Services
             {
                 new AreaChangeParser(),
                 new PlayerJoinedAreaParser(),
+                new TradeChatMessageParser(),
                 new GlobalMessageParser(),
                 new IncomingTradeParser(),
                 new OutgoingTradeParser()
@@ -77,6 +78,8 @@ namespace PoeLogsParser.Services
             }
 
             var dateTimeEndIndex = (dateEndIndex + timeEndIndex) - 1;
+
+            if(dateTimeEndIndex == -1) return default;
 
             var timeStr = line[..dateTimeEndIndex];
             line = line[(dateTimeEndIndex + 1)..];
