@@ -10,7 +10,7 @@
         <PackageLicenseUrl>https://github.com/nomis51/poe-logs-parser/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/nomis51/poe-logs-parser</RepositoryUrl>
         <PackageTags>poe,path,of,exile,log,parser,</PackageTags>
-        <PackageVersion>1.0.6</PackageVersion>
+        <PackageVersion>1.0.9</PackageVersion>
     </PropertyGroup>
 
 </Project>

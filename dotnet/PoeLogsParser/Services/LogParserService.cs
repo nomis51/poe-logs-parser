@@ -30,7 +30,8 @@ namespace PoeLogsParser.Services
                 new TradeChatMessageParser(),
                 new GlobalMessageParser(),
                 new IncomingTradeParser(),
-                new OutgoingTradeParser()
+                new OutgoingTradeParser(),
+                new TradeStateParser()
             };
         }
 

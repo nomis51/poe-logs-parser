@@ -27,6 +27,10 @@ namespace PoeLogsParser.Services.Abstractions
         delegate void NewChatMessageLogEntryEvent(ChatMessageLogEntry logEntry);
 
         event NewChatMessageLogEntryEvent NewChatMessageLogEntry;
+        
+        delegate void NewTradeStateLogEntryEvent(TradeStateLogEntry logEntry);
+
+        event NewTradeStateLogEntryEvent NewTradeStateLogEntry;
 
         void AddParser(IParser parser);
         void AddParsers(IEnumerable<IParser> parsers);

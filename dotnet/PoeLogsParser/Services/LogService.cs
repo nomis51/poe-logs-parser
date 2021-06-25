@@ -18,6 +18,7 @@ namespace PoeLogsParser.Services
         public event ILogService.NewPlayerJoinedAreaLogEntryEvent NewPlayerJoinedAreaLogEntry;
         public event ILogService.NewAreaChangeLogEntryEvent NewAreaChangeLogEntry;
         public event ILogService.NewChatMessageLogEntryEvent NewChatMessageLogEntry;
+        public event ILogService.NewTradeStateLogEntryEvent NewTradeStateLogEntry;
 
         #endregion
 
@@ -50,7 +51,11 @@ namespace PoeLogsParser.Services
             {
                 OnNewChatMessageLogEntry((ChatMessageLogEntry) entry);
             }
-           else if (entry.Types.Contains(LogEntryType.Trade))
+            else if (entry.Types.Contains(LogEntryType.TradeState))
+            {
+                OnNewTradeStateLogEntry((TradeStateLogEntry) entry);
+            }
+            else if (entry.Types.Contains(LogEntryType.Trade))
             {
                 OnNewTradeLogEntry((TradeLogEntry) entry);
             }
@@ -152,5 +157,10 @@ namespace PoeLogsParser.Services
         }
 
         #endregion
+
+        protected virtual void OnNewTradeStateLogEntry(TradeStateLogEntry logEntry)
+        {
+            NewTradeStateLogEntry?.Invoke(logEntry);
+        }
     }
 }
