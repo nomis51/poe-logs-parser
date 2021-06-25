@@ -13,6 +13,7 @@ namespace PoeLogsParser.Enums
         ChatMessage,
         JoinArea,
         LeaveArea,
-        ChangeArea
+        ChangeArea,
+        TradeState,
     }
 }
