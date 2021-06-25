@@ -44,10 +44,10 @@ namespace PoeLogsParser.Parsers
 
             var parts = line.Split("#", StringSplitOptions.RemoveEmptyEntries);
 
-            tradeLogEntry.Player = parts[0];
+            tradeLogEntry.Player = Regex.IsMatch(parts[0], "<.+> .+") ? parts[0][(parts[0].IndexOf("> ", StringComparison.Ordinal) + 2)..] : parts[0];
 
             var itemMatch = _regNumber.Match(parts[1]);
-            
+
             if (itemMatch.Success && itemMatch.Index == 0 && itemMatch.Length == parts[1].Length)
             {
                 var itemParts = parts[1].Split(" ");
@@ -57,7 +57,8 @@ namespace PoeLogsParser.Parsers
                     Quantity = Convert.ToInt32(itemParts[0]),
                     Name = itemParts[1..].Aggregate((total, value) => $"{total} {value}")
                 };
-            } else
+            }
+            else
             {
                 tradeLogEntry.Item = new Item()
                 {
