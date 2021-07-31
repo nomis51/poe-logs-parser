@@ -7,11 +7,11 @@ namespace PoeLogsParser.Parsers
     public class OutgoingTradeParser : TradeParser
     {
         public OutgoingTradeParser() : base(LogEntryType.Outgoing, new Regex(
-            "@To .+: Hi, (I would|I'd) like to buy your .+ (listed for|for my) [0-9]+ .+ in .+",
+            "(@.+|@To .+:) Hi, (I would|I'd) like to buy your .+ (listed for|for my) [0-9]+ .+ in .+",
             RegexOptions.IgnoreCase), new List<Regex>
         {
-            new Regex("@To ", RegexOptions.IgnoreCase),
-            new Regex(": Hi, (I would|I'd) like to buy your ", RegexOptions.IgnoreCase),
+            new Regex("(@To |@)", RegexOptions.IgnoreCase),
+            new Regex(":{0,1} Hi, (I would|I'd) like to buy your ", RegexOptions.IgnoreCase),
             new Regex(" (listed for|for my) ", RegexOptions.IgnoreCase),
             new Regex(" in ", RegexOptions.IgnoreCase),
             new Regex(" \\(stash tab \"", RegexOptions.IgnoreCase),

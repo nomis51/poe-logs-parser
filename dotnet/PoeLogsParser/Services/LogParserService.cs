@@ -49,13 +49,14 @@ namespace PoeLogsParser.Services
                 try
                 {
                     return parser.Execute(entry.Item2, entry.Item1);
-                } catch
+                }
+                catch
                 {
                     // ignored
                 }
             }
 
-            entry.Item1.Types = new[] {LogEntryType.System};
+            entry.Item1.Types = new[] { LogEntryType.System };
 
             return entry.Item1;
         }
@@ -64,41 +65,50 @@ namespace PoeLogsParser.Services
         {
             var entry = new LogEntry(line, DateTime.Now, new List<LogEntryType>());
 
-            var dateEndIndex = line.IndexOf(" ", StringComparison.Ordinal);
+            string timeStr;
 
-            if (dateEndIndex == -1)
+            if (line.StartsWith("@"))
             {
-                return default;
+                timeStr = DateTime.Now.ToString();
             }
-
-            var timeEndIndex = line.IndexOf(" ", dateEndIndex, StringComparison.Ordinal);
-
-            if (timeEndIndex == -1)
+            else
             {
-                return default;
+                var dateEndIndex = line.IndexOf(" ", StringComparison.Ordinal);
+
+                if (dateEndIndex == -1)
+                {
+                    return default;
+                }
+
+                var timeEndIndex = line.IndexOf(" ", dateEndIndex, StringComparison.Ordinal);
+
+                if (timeEndIndex == -1)
+                {
+                    return default;
+                }
+
+                var dateTimeEndIndex = (dateEndIndex + timeEndIndex) - 1;
+
+                if (dateTimeEndIndex == -1) return default;
+
+                timeStr = line[..dateTimeEndIndex];
+                line = line[(dateTimeEndIndex + 1)..];
             }
-
-            var dateTimeEndIndex = (dateEndIndex + timeEndIndex) - 1;
-
-            if(dateTimeEndIndex == -1) return default;
-
-            var timeStr = line[..dateTimeEndIndex];
-            line = line[(dateTimeEndIndex + 1)..];
 
             var logTagMatch = _regLogEntryTag.Match(line);
 
-            if (!logTagMatch.Success)
+            if (logTagMatch.Success)
             {
-                return default;
+
+                var tagStr = line.Substring(logTagMatch.Index + 1,
+                    line.IndexOf(" ", logTagMatch.Index, StringComparison.Ordinal));
+                tagStr = tagStr[..tagStr.IndexOf(" ", StringComparison.Ordinal)];
+                line = line[(logTagMatch.Index + logTagMatch.Length)..];
+
+                entry.Tag = LogEntryTagConveter.Convert(tagStr);
             }
 
-            var tagStr = line.Substring(logTagMatch.Index + 1,
-                line.IndexOf(" ", logTagMatch.Index, StringComparison.Ordinal));
-            tagStr = tagStr[..tagStr.IndexOf(" ", StringComparison.Ordinal)];
-            line = line[(logTagMatch.Index + logTagMatch.Length)..];
-
             entry.Time = DateTime.Parse(timeStr);
-            entry.Tag = LogEntryTagConveter.Convert(tagStr);
 
             return new Tuple<LogEntry, string>(entry, line);
         }
