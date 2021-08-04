@@ -18,6 +18,8 @@ namespace ConsoleTests
         {
             ILogService ls = new LogService("C:/Games/Path of Exile/logs/Client.txt");
             ls.NewTradeLogEntry += Ls_NewTradeLogEntry;
+
+            ls.Parse("2021/01/23 13:31:37 321298453 bb2 [INFO Client 46012] @From dogmatixx: Hi, I would like to buy your The Dream Trial listed for 1 chaos in Expedition (stash tab \"$\"; position: left 12, top 7)");
             
             Console.ReadKey();
         }

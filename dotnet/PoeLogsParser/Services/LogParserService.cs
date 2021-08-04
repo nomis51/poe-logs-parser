@@ -25,13 +25,13 @@ namespace PoeLogsParser.Services
             _currencyService = new CurrencyService();
             _parsers = new List<IParser>()
             {
-                new AreaChangeParser(),
-                new PlayerJoinedAreaParser(),
-                new TradeChatMessageParser(),
-                new GlobalMessageParser(),
                 new IncomingTradeParser(),
                 new OutgoingTradeParser(),
-                new TradeStateParser()
+                new AreaChangeParser(),
+                new PlayerJoinedAreaParser(),
+                new TradeStateParser(),
+                new TradeChatMessageParser(),
+                new GlobalMessageParser(),
             };
         }
 
